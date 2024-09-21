@@ -1,0 +1,117 @@
+:root{
+    --sunflower-width: 10vw;
+    --sunflower-height: 20vh;
+}
+
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --sunflower-width: 20vw;
+        --sunflower-height: 20vw;
+    }
+}
+
+img {
+    width: 100%;
+}
+
+.sunflower-left{
+    z-index: 1;
+    position: absolute;
+    width: var(--sunflower-width);
+    left: calc(0px - var(--sunflower-width));
+    transition: all .6s ease 2s;
+    &.active{
+        left: calc(var(--sunflower-width) - var(--sunflower-width)*1.5);
+    }
+}
+
+.sunflower-right{
+    z-index: 1;
+    position: absolute;
+    width: var(--sunflower-width);
+    right: calc(0px - var(--sunflower-width));
+    transition: all .6s ease 2s;
+    &.active{
+        right: calc(var(--sunflower-width) - var(--sunflower-width)*1.5);
+    }
+}
+
+main{
+    
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sky{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('images/twilight-cloud.jpg');
+    background-size: cover;
+    background-position: 0% 150%;
+    background-repeat: no-repeat;
+    transition: all .6s ease 2s;
+    opacity: 0;
+    &.active{
+        opacity: 1;
+    }
+}
+
+.sunflower-mid{
+    position: absolute;
+    width: auto;
+    height: 50vh;
+    transition: all .6s ease 2s;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    opacity: 0;
+    img{
+        max-height: 100%;
+        width: auto;
+        transform: rotate(90deg);
+    }
+    &.active{
+        transform: translate(-50%,-50%);
+        opacity: 1;
+    }
+}
+
+.bg{
+    z-index: 0;
+    position: absolute;
+    bottom: -100vh;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./images/background.png');
+    background-size: cover;
+    background-position: -100%;
+    transition: bottom 2s ease-out, opacity 2s ease-in;
+    opacity: 0;
+    &.animate__fadeInUp{
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+#florBtn{
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    background: transparent;
+    opacity: 1;
+    transition: all .6s ease;
+    &.hide{
+        opacity: 0;
+    }
+}
